@@ -41,7 +41,7 @@ def temperature_converter():
     3. Convert and display result
     """
     temperature = float(input("Write the temperature : "))
-    unit = str(input("Write the unit : "))
+    unit = input("Write the unit : ").upper()
     
     if unit == "C":
         print(f"The converted value is {celsius_to_fahrenheit(temperature) : .2f} °F")
