@@ -1,0 +1,5 @@
+9519040 Personalize hello message
+105e395 Add hello_git.py
+b92d910 Name and Date changed
+7bcb689 Add GitHub Classroom autograding configuration
+2dc2daa Initial commit
