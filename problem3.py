@@ -3,6 +3,7 @@ Problem 3: Number Analysis
 Analyze a list of numbers provided by the user.
 """
 
+
 def get_numbers_from_user():
     """
     Get numbers from user until they type 'done'.
@@ -14,11 +15,15 @@ def get_numbers_from_user():
     numbers = []
 
     while True:
-        # TODO: Get input from user
-        # TODO: Check if user typed 'done'
-        # TODO: Try to convert to float and add to list
-        # TODO: Handle invalid input gracefully
-        pass
+        nb = input("Enter numbers one at a time. Type 'done' when finished.")
+        if nb == "done":
+            break
+        try:
+            float(nb)
+            nb = float(nb)
+            numbers.append(nb)
+        except ValueError:
+            print(f" the format {nb} is not adequate")
 
     return numbers
 
@@ -43,15 +48,29 @@ def analyze_numbers(numbers):
     if not numbers:
         return None
 
-    analysis = {}
+    count = len(numbers)
+    sum_list = sum(numbers)
+    average = sum_list / count
+    minimum = min(numbers)
+    maximum = max(numbers)
+    even = 0
+    odd = 0
 
-    # TODO: Calculate count
-    # TODO: Calculate sum
-    # TODO: Calculate average
-    # TODO: Find minimum
-    # TODO: Find maximum
-    # TODO: Count even numbers (hint: use modulo operator)
-    # TODO: Count odd numbers
+    for i in numbers:
+        if i % 2 == 0:
+            even += 1
+        else:
+            odd += 1
+
+    analysis = {
+        "count": count,
+        "sum": sum_list,
+        "average": average,
+        "minimum": minimum,
+        "maximum": maximum,
+        "even": even,
+        "odd": odd,
+    }
 
     return analysis
 
@@ -64,18 +83,13 @@ def display_analysis(analysis):
         analysis (dict): Dictionary containing analysis results
     """
     if not analysis:
-        return
+        return None
 
     print("\nAnalysis Results:")
-    print("-" * 20)
+    for key, items in analysis.items():
+        print(f"{key} : {items}")
 
-    # TODO: Display all analysis results in a nice format
-    # Example:
-    # Count: 5
-    # Sum: 25
-    # Average: 5.00
-    # etc.
-    pass
+    print("-" * 20)
 
 
 def main():
